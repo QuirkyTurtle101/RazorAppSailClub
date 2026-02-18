@@ -10,6 +10,9 @@ namespace RazorBoatApp2026InClass.Pages.Boats
         private IBoatRepository bRepo;
         public List<Boat> Boats { get; set; }
 
+        [BindProperty(SupportsGet=true)]
+        public string SortBy { get; set; }
+
 
         public IndexModel(IBoatRepository boatRepository)
         {

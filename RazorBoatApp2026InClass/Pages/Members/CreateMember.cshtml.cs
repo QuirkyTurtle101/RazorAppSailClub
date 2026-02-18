@@ -4,24 +4,21 @@ using SailClubLibrary.Interfaces;
 using SailClubLibrary.Models;
 using SailClubLibrary.Exceptions;
 
-namespace RazorBoatApp2026InClass.Pages.Boats
+namespace RazorBoatApp2026InClass.Pages.Members
 {
-    public class CreateBoatModel : PageModel
+    public class CreateMemberModel : PageModel
     {
-        private IBoatRepository _repo;
-
+        private IMemberRepository _repo;
         [BindProperty]
-        public Boat NewBoat { get; set; }
-
-        public CreateBoatModel(IBoatRepository boatRepository)
+        public Member NewMember { get; set; }
+        public CreateMemberModel(IMemberRepository repo)
         {
-            _repo = boatRepository;
+            _repo = repo;
         }
 
         public void OnGet()
         {
         }
-
 
         public IActionResult OnPost()
         {
@@ -31,9 +28,9 @@ namespace RazorBoatApp2026InClass.Pages.Boats
             }
             try
             {
-                _repo.AddBoat(NewBoat);
+                _repo.AddMember(NewMember);
             }
-            catch (BoatSailnumberExistsException e)
+            catch (MemberPhoneNumberExistsException e)
             {
                 ViewData["ErrorMessage"] = e.Message;
                 return Page();
@@ -43,6 +40,7 @@ namespace RazorBoatApp2026InClass.Pages.Boats
                 ViewData["ErrorMessage"] = e.Message;
                 return Page();
             }
+            
             return RedirectToPage("Index");
         }
     }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace SailClubLibrary.Models
 {
@@ -12,11 +13,15 @@ namespace SailClubLibrary.Models
         #endregion
 
         #region Properties
+        [Required(ErrorMessage="First name is required.")]
         public string FirstName { get; set; }
         public string SurName { get; set; }
+        [Required(ErrorMessage = "Phone number is required.")]
         public string PhoneNumber { get; set; }
         public string Address { get; set; }
         public string City { get; set; }
+        [Required(ErrorMessage = "Mail is required.")]
+        [EmailAddress]
         public string Mail { get; set; }
         public MemberType TheMemberType { get; set; }
         public MemberRole TheMemberRole { get; set; }
