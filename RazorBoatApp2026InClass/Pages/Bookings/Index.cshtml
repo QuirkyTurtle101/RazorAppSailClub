@@ -2,4 +2,40 @@
 @using SailClubLibrary.Models;
 @model RazorBoatApp2026InClass.Pages.Bookings.IndexModel
 @{
+    ViewData["Title"] = "View bookings";
 }
+
+<h1>List of bookings</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Booking ID</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Member Name</th>
+            <th>Boat Sail Number</th>
+            <th>State</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Booking b in @Model.Bookings)
+        {
+            <tr>
+                <td>@b.Id</td>
+                <td>@b.StartDate</td>
+                <td>@b.EndDate</td>
+                <td>@b.TheMember.FirstName @b.TheMember.SurName</td>
+                <td>@b.TheBoat.SailNumber</td>
+                @if (b.IsActive)
+                {
+                    <td>Active</td>
+                }
+                else
+                {
+                    <td>Inactive</td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
