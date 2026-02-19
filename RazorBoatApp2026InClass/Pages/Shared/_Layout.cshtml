@@ -39,6 +39,30 @@
                             <a class="nav-link text-dark" asp-area="" asp-page="/members/index">Members</a>
                         </li>
                         <li class="nav-item">
+                            <!-- THIS VERSION OF DROPDOWN IS UNTOUCHED FROM INITIAL - UGLY BUT NEEDS NO CUSTOM WORK 
+                            <div class="dropdown">
+                                <a class="nav-link dropdown-toggle text-dark" href="#" role="button" id="dropdownBookings" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Bookings
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownBookings">
+                                    <a class="dropdown-item" asp-page="/bookings/index">List bookings</a>
+                                    <a class="dropdown-item" asp-page="/bookings/chooseboat">Create a booking</a>
+                                </div>
+                            </div>
+                            -->
+
+                            <div class="dropdown">
+                                <a class="nav-link dropdown-toggle text-dark" href="#" role="button" id="dropdownBookings" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Bookings
+                                </a>
+                                <div class="dropdown-menu dropdown-custom-appearance dropdown-menu-right" aria-labelledby="dropdownBookings">
+                                    <a class="dropdown-item" asp-page="/bookings/index">List bookings</a>
+                                    <a class="dropdown-item" asp-page="/bookings/chooseboat">Create a booking</a>
+                                </div>
+                            </div>
+                            
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
                         </li>
                     </ul>

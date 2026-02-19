@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using SailClubLibrary.Interfaces;
 using SailClubLibrary.Models;
+using SailClubLibrary.Helpers.Sorters;
 
 namespace RazorBoatApp2026InClass.Pages.Boats
 {
@@ -13,6 +14,8 @@ namespace RazorBoatApp2026InClass.Pages.Boats
         [BindProperty(SupportsGet=true)]
         public string SortBy { get; set; }
 
+        [BindProperty(SupportsGet = true)]
+        public string FilterCriteria { get; set; }
 
         public IndexModel(IBoatRepository boatRepository)
         {
@@ -20,7 +23,25 @@ namespace RazorBoatApp2026InClass.Pages.Boats
         }
         public void OnGet()
         {
-            Boats = bRepo.GetAllBoats();
+            if (!string.IsNullOrEmpty(FilterCriteria))
+            {
+                Boats = bRepo.FilterBoats(FilterCriteria);
+            }
+            else
+            {
+                Boats = bRepo.GetAllBoats();
+            }
+            switch (SortBy)
+            {
+                case "ID":
+                    Boats.Sort();
+                    break;
+                case "YearOfConstruction":
+                    Boats.Sort(new BoatComparerYear());
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

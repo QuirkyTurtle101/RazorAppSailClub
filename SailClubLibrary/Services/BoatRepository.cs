@@ -108,7 +108,15 @@ namespace SailClubLibrary.Services
 
         public List<Boat> FilterBoats(string filterCriteria)
         {
-            throw new NotImplementedException();
+            List<Boat> output = GetAllBoats();
+            foreach (Boat b in GetAllBoats())
+            {
+                if (!b.SailNumber.Contains(filterCriteria))
+                {
+                    output.Remove(b);
+                }
+            }
+            return output;
         }
         #endregion
     }
