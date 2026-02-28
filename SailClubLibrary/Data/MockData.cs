@@ -24,6 +24,7 @@ namespace SailClubLibrary.Data
             { "17-8767", new Boat(2, BoatType.LYNÆS, "Model", "17-8767", "Fast :3", 34, 25, 17, "2000")},
 
               };
+
         #endregion
 
         #region Properties
