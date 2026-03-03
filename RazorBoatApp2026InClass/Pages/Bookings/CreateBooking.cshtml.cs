@@ -40,6 +40,8 @@ namespace RazorBoatApp2026InClass.Pages.Bookings
 
         public IActionResult OnPost(string sailNumber)
         {
+            //pain horror and suffering
+            BoatChosen = _boatRepo.SearchBoat(sailNumber);
             if (!ModelState.IsValid)
             {
                 return Page();
